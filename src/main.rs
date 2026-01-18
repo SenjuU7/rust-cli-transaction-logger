@@ -6,35 +6,13 @@ fn main() {
     println!("Menginput transaksi penjualan...");
     println!("----------------------------------");
 
-    let mut nama = String::new();
-    let mut harga = String::new();
-    let mut qty = String::new();
-    let mut kasir = String::new();
-    let mut catatan = String::new();
+    let nama = input("Masukkan nama barang: ");
+    let harga: u32 = input("Masukkan harga barang: ").parse().unwrap();
+    let qty: u32 = input("Masukkan jumlah barang: ").parse().unwrap();
+    let kasir = input("Masukkan nama kasir: ");
+    let catatan = input("Masukkan catatan (opsional): ");
 
-    print!("Nama : ");
-    io::stdout().flush().unwrap();
-    io::stdin().read_line(&mut nama).unwrap();
-
-    print!("Harga : ");
-    io::stdout().flush().unwrap();
-    io::stdin().read_line(&mut harga).unwrap();
-
-    print!("Qty : ");
-    io::stdout().flush().unwrap();
-    io::stdin().read_line(&mut qty).unwrap();
-
-    print!("Kasir : ");
-    io::stdout().flush().unwrap();
-    io::stdin().read_line(&mut kasir).unwrap();
-
-    print!("Catatan : ");
-    io::stdout().flush().unwrap();
-    io::stdin().read_line(&mut catatan).unwrap();
-
-let harga: u32 = harga.trim().parse().unwrap();
-let qty: u32 = qty.trim().parse().unwrap();
-let total = harga * qty;
+    let total = harga * qty;
 
     let trx = Transaksi{
         nama: nama.trim().to_string(),
@@ -104,10 +82,10 @@ impl Transaksi {
     }
 }
 
-// fn input(prompt: &str) -> String {
-//     let mut buf = String::new();
-//     print!("{}", prompt);
-//     io::stdout().flush().unwrap();
-//     io::stdin().read_line(&mut buf).unwrap();
-//     buf.trim().to_string()
-// }
+fn input(prompt: &str) -> String {
+    let mut buf = String::new();
+    print!("{}", prompt);
+    io::stdout().flush().unwrap();
+    io::stdin().read_line(&mut buf).unwrap();
+    buf.trim().to_string()
+}
