@@ -45,4 +45,4 @@ Each transaction is stored with the following fields:
 
 2. Clone the repository
    ```bash
-   
+   git clone https://github.com/SenjuU7/rust-cli-transaction-logger
